@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#28B7D1"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="263dp"
+        android:layout_height="271dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/logoapp"
+        app:layout_constraintBottom_toTopOf="@+id/btnInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.31" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="277dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/heading_icons"
+        app:layout_constraintBottom_toTopOf="@+id/btnInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView7"
+        app:layout_constraintVertical_bias="0.58" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnInfo"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/button_radius"
+        android:text="Como Funciona"
+
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/btnClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnClick"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/gradient"
+        android:text="Iniciar"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
