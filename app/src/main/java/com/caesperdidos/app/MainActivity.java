@@ -1,5 +1,6 @@
 package com.caesperdidos.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.activity.EdgeToEdge;
@@ -12,7 +13,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
 
-  private MaterialButton btnInfo;
+  private MaterialButton btnInfo,btnClick;
 
     /// Mostra informações sobre o aplicativo
   private void openMessageInfo(){
@@ -28,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
       });
   }
 
+  private void openPageHome(){
+      btnClick = findViewById(R.id.btnClick);
+      btnClick.setOnClickListener(view -> {
+          Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+          startActivity(intent);
+      });
+  }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         //Configura o botão para exibir a mensagem sobre o app
         openMessageInfo();
 
-
+        //exibe a pagina home do aplicativo
+        openPageHome();
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
