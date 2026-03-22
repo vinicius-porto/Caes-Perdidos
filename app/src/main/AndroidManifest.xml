@@ -13,10 +13,10 @@
         android:theme="@style/Theme.CaesPerdidos">
         <activity
             android:name=".HomeActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
-            android:name=".SecondActivity"
-            android:exported="false" />
+            android:name=".HomeCadastroActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
