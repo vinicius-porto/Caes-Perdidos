@@ -1,10 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#28B7D1"
     tools:context=".HomeCadastroActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Cadastro"
+        android:textColor="@android:color/white"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/inputNome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.649" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputNome"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="12dp"
+        app:boxBackgroundMode="none"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toTopOf="@id/inputRaca"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editNome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_radius"
+        android:hint="Nome"
+        android:textColorHint="#ffffff"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical|start"/>
+</com.google.android.material.textfield.TextInputLayout>
+
+
+<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputRaca"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="12dp"
+        app:boxBackgroundMode="none"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toTopOf="@id/inputCor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+<com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editRaca"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_radius"
+        android:hint="Raça"
+        android:textColorHint="#ffffff"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical|start"/>
+</com.google.android.material.textfield.TextInputLayout>
+
+
+<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputCor"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="12dp"
+        app:boxBackgroundMode="none"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toTopOf="@id/inputDescricao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+<com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editCor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_radius"
+        android:hint="Cor"
+        android:textColorHint="#ffffff"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical|start"/>
+</com.google.android.material.textfield.TextInputLayout>
+
+
+<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputDescricao"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        app:boxBackgroundMode="none"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toTopOf="@id/btnCadastro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_radius"
+        android:hint="Descrição"
+        android:textColorHint="#ffffff"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"/>
+</com.google.android.material.textfield.TextInputLayout>
+
+
+<com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCadastro"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/gradient"
+        android:text="Cadastrar Cachorro"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
