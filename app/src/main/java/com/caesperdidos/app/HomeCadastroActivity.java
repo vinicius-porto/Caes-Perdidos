@@ -39,23 +39,28 @@ public class HomeCadastroActivity extends AppCompatActivity {
         String cor = editCor.getText().toString().trim();
         String descricao = editDescricao.getText().toString().trim();
 
-        //verifica os campos
-        if (nome.isEmpty() || raca.isEmpty() || cor.isEmpty() || descricao.isEmpty()) {
+        //Verifica se os campos obrigatórios estão preenchidos
+        if (nome.isEmpty()) {
+            editNome.setError(mensagensErro[0]);
+            editNome.requestFocus();
+            return;
+        }
 
-            if (nome.isEmpty()) {
-                editNome.setError(mensagensErro[0]);
-                editNome.requestFocus();
-            } else if (raca.isEmpty()) {
-                editRaca.setError(mensagensErro[1]);
-                editRaca.requestFocus();
-            } else if (cor.isEmpty()) {
-                editCor.setError(mensagensErro[2]);
-                editCor.requestFocus();
-            } else if (descricao.isEmpty()) {
-                editDescricao.setError(mensagensErro[3]);
-                editDescricao.requestFocus();
-            }
+        if (raca.isEmpty()) {
+            editRaca.setError(mensagensErro[1]);
+            editRaca.requestFocus();
+            return;
+        }
 
+        if (cor.isEmpty()) {
+            editCor.setError(mensagensErro[2]);
+            editCor.requestFocus();
+            return;
+        }
+
+        if (descricao.isEmpty()) {
+            editDescricao.setError(mensagensErro[3]);
+            editDescricao.requestFocus();
             return;
         }
 
