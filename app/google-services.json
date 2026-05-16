@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "252586204734",
+    "project_id": "caesperdidos-46812",
+    "storage_bucket": "caesperdidos-46812.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252586204734:android:5ef25160b7774dd88b7b6f",
+        "android_client_info": {
+          "package_name": "com.caesperdidos.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF02cLQ0I_L84OPu0mGB45RgZ_YVea-CE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
