@@ -10,10 +10,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.appcompat.widget.AppCompatEditText;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class HomeCadastroActivity extends AppCompatActivity {
 
 
     private MaterialButton btnCadastro;
+    private FirebaseDatabase database;
     private AppCompatEditText editNome,editRaca,editCor,editDescricao;
 
 
@@ -33,7 +36,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
     };
 
 
-    private void verificaCampos() {
+    private  boolean verificaCampos() {
         String nome = editNome.getText().toString().trim();
         String raca = editRaca.getText().toString().trim();
         String cor = editCor.getText().toString().trim();
@@ -43,25 +46,25 @@ public class HomeCadastroActivity extends AppCompatActivity {
         if (nome.isEmpty()) {
             editNome.setError(mensagensErro[0]);
             editNome.requestFocus();
-            return;
+            return false;
         }
 
         if (raca.isEmpty()) {
             editRaca.setError(mensagensErro[1]);
             editRaca.requestFocus();
-            return;
+            return false;
         }
 
         if (cor.isEmpty()) {
             editCor.setError(mensagensErro[2]);
             editCor.requestFocus();
-            return;
+            return false;
         }
 
         if (descricao.isEmpty()) {
             editDescricao.setError(mensagensErro[3]);
             editDescricao.requestFocus();
-            return;
+            return false;
         }
 
         // Cria objeto
@@ -70,18 +73,33 @@ public class HomeCadastroActivity extends AppCompatActivity {
         cadastrarCachorro.setRaca(raca);
         cadastrarCachorro.setCor(cor);
         cadastrarCachorro.setDescricao(descricao);
+        String id = database.getReference()
+                .child("cachorros")
+                .push()
+                .getKey();
 
 
-        Toast.makeText(this,
-                "Cachorro cadastrado:\n" +
-                        "Nome: " + cadastrarCachorro.getNome() + "\n" +
-                        "Raça: " + cadastrarCachorro.getRaca() + "\n" +
-                        "Cor: " + cadastrarCachorro.getCor() + "\n" +
-                        "Descrição: " + cadastrarCachorro.getDescricao(),
-                Toast.LENGTH_LONG
-        ).show();
+        database.getReference()
+                .child("cachorros")
+                .child(id)
+                .setValue(cadastrarCachorro)
+                .addOnSuccessListener(unused -> {
 
+                    Toast.makeText(this,
+                            "Cachorro cadastrado com sucesso!",
+                            Toast.LENGTH_LONG).show();
 
+                    limparCampos();
+
+                }).addOnFailureListener(e -> {
+
+                    Toast.makeText(this,
+                            "Erro ao cadastrar",
+                            Toast.LENGTH_LONG).show();
+
+                });
+
+        return true;
     }
 
     private void limparCampos(){
@@ -96,17 +114,12 @@ public class HomeCadastroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_cadastro);
-
-
+        database = FirebaseDatabase.getInstance();
 
         selectElements();
-
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -118,15 +131,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
 
         btnCadastro.setOnClickListener(v -> {
 
-
             verificaCampos();
-
-            limparCampos();
-
-
-
-
-
         });
 
 
