@@ -19,6 +19,11 @@ public class HomeCadastroActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private AppCompatEditText editNome,editRaca,editCor,editDescricao;
 
+    private static final String ERRO_NOME = "Por favor insira o nome";
+    private static final String ERRO_RACA = "Por favor insira a raça";
+    private static final String ERRO_COR = "Por favor insira a cor";
+
+    private static final String ERRO_DESCRICAO = "Por favor insira a descrição";
 
     private void selectElements(){
         btnCadastro = findViewById(R.id.btnCadastro);
@@ -28,12 +33,6 @@ public class HomeCadastroActivity extends AppCompatActivity {
         editDescricao = findViewById(R.id.editDescricao);
     }
 
-    private final String[] mensagensErro = {
-            "Por favor, insira o nome",
-            "Por favor, insira a raça",
-            "Por favor, insira a cor",
-            "Por favor, insira a descrição"
-    };
 
 
     private  boolean verificaCampos() {
@@ -44,25 +43,19 @@ public class HomeCadastroActivity extends AppCompatActivity {
 
         //Verifica se os campos obrigatórios estão preenchidos
         if (nome.isEmpty()) {
-            editNome.setError(mensagensErro[0]);
+            editNome.setError(ERRO_NOME);
             editNome.requestFocus();
             return false;
-        }
-
-        if (raca.isEmpty()) {
-            editRaca.setError(mensagensErro[1]);
+        } else if (raca.isEmpty()) {
+            editRaca.setError(ERRO_RACA);
             editRaca.requestFocus();
             return false;
-        }
-
-        if (cor.isEmpty()) {
-            editCor.setError(mensagensErro[2]);
+        } else if (cor.isEmpty()) {
+            editCor.setError(ERRO_COR);
             editCor.requestFocus();
             return false;
-        }
-
-        if (descricao.isEmpty()) {
-            editDescricao.setError(mensagensErro[3]);
+        } else if (descricao.isEmpty()) {
+            editDescricao.setError(ERRO_DESCRICAO);
             editDescricao.requestFocus();
             return false;
         }
