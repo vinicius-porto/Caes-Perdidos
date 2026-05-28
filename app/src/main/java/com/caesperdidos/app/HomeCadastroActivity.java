@@ -17,7 +17,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
 
     private MaterialButton btnCadastro;
     private FirebaseDatabase database;
-    private AppCompatEditText editNome,editRaca,editCor,editDescricao,editTelefone;
+    private AppCompatEditText editNome,editRaca,editCor,editDescricao,editTelefone, editTutor;
 
     private static final String ERRO_NOME = "Por favor insira o nome";
     private static final String ERRO_RACA = "Por favor insira a raça";
@@ -27,6 +27,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
 
     private static final String ERRO_TELEFONE = "Por favor insira o número de telefone";
 
+    private static final String ERRO_TUTOR = "Por favor informe o nome do tutor";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
         editCor = findViewById(R.id.editCor);
         editDescricao = findViewById(R.id.editDescricao);
         editTelefone = findViewById(R.id.editTelefone);
+        editTutor = findViewById(R.id.editTutor);
     }
 
 
@@ -73,9 +75,13 @@ public class HomeCadastroActivity extends AppCompatActivity {
         String cor = editCor.getText().toString().trim();
         String descricao = editDescricao.getText().toString().trim();
         String telefone = editTelefone.getText().toString().trim();
-
+        String tutor = editTutor.getText().toString().trim();
         //Verifica se os campos obrigatórios estão preenchidos
-        if(telefone.isEmpty()) {
+       if(tutor.isEmpty()) {
+           editTutor.setError(ERRO_TUTOR);
+           editTutor.requestFocus();
+           return  false;
+       } else if(telefone.isEmpty()) {
             editTelefone.setError(ERRO_TELEFONE);
             editTelefone.requestFocus();
             return false;
@@ -111,7 +117,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
         String cor = editCor.getText().toString().trim();
         String descricao = editDescricao.getText().toString().trim();
         String telefone = editTelefone.getText().toString().trim();
-
+        String tutor = editTutor.getText().toString().trim();
 
         // Cria objeto
         CadastrarCachorro cadastrarCachorro = new CadastrarCachorro();
@@ -120,6 +126,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
         cadastrarCachorro.setCor(cor);
         cadastrarCachorro.setDescricao(descricao);
         cadastrarCachorro.setTelefone(telefone);
+        cadastrarCachorro.setTutor(tutor);
         String id = database.getReference()
                 .child("cachorros")
                 .push()
@@ -157,6 +164,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
         editCor.setText("");
         editDescricao.setText("");
         editTelefone.setText("");
+        editTutor.setText("");
         editNome.requestFocus();
     }
 
