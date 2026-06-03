@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.button.MaterialButton;
 
 public class HomeActivity extends AppCompatActivity {
-private MaterialButton btnCadastrarCachorros;
+private MaterialButton btnCadastrarCachorros,btnVerCachorros;
 
 private void openPageCadastro(){
     btnCadastrarCachorros = findViewById(R.id.btnCadastrarCachorros);
@@ -22,6 +22,13 @@ private void openPageCadastro(){
     });
 }
 
+private void openPageLista(){
+    btnVerCachorros = findViewById(R.id.btnVerCachorros);
+    btnVerCachorros.setOnClickListener(view -> {
+        Intent intent = new Intent(HomeActivity.this, ListaCachorro.class);
+        startActivity(intent);
+    });
+}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +38,7 @@ private void openPageCadastro(){
 
 
         openPageCadastro();
-
+        openPageLista();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
