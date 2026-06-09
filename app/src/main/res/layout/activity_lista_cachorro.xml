@@ -5,10 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#28B7D1"
     tools:context=".ListaCachorro">
 
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ListView
         android:id="@+id/listViewCachorros"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="319dp"
+        android:layout_height="672dp"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="43dp">
+
+    </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>
