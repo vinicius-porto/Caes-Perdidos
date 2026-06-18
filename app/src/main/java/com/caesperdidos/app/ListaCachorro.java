@@ -24,8 +24,8 @@ public class ListaCachorro extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private ListView listView;
-    private ArrayList<String> lista;
-    private ArrayAdapter<String> adapter;
+    private ArrayList<CadastrarCachorro> lista;
+    private CachorroAdapter adapter;
 
 
     @Override
@@ -43,13 +43,14 @@ public class ListaCachorro extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         lista = new ArrayList<>();
 
-        adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1,
-                lista
-        );
+        adapter = new CachorroAdapter(this, lista);
 
         listView.setAdapter(adapter);
         carregarDados();
+
+
+
+
     }
 
     private void carregarDados() {
@@ -77,20 +78,14 @@ public class ListaCachorro extends AppCompatActivity {
             CadastrarCachorro cachorro = dados.getValue(CadastrarCachorro.class);
 
             if (cachorro != null) {
-                lista.add(formatarCachorro(cachorro));
+                lista.add(cachorro);
             }
         }
 
         adapter.notifyDataSetChanged();
     }
 
-    private String formatarCachorro(CadastrarCachorro cadastrarcachorro)
-    {
-        return "Nome: " + cadastrarcachorro.getNome() + "\n"
-                + "Raça: " + cadastrarcachorro.getRaca() + "\n"
-                + "Cor: " + cadastrarcachorro.getCor() + "\n"
-                + "Tutor: " + cadastrarcachorro.getTutor();
-    }
+
 
 
 }
