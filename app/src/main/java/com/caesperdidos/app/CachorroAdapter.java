@@ -33,9 +33,10 @@ public class CachorroAdapter extends ArrayAdapter<CadastrarCachorro> {
             CadastrarCachorro cachorro = getItem(position);
 
             if (cachorro != null) {
-                txtNome.setText(cachorro.getNome());
-                txtRaca.setText("Raça: " + cachorro.getRaca());
-                txtCor.setText("Cor: " + cachorro.getCor());
+                txtNome.setText("🐶Nome: " + cachorro.getNome());
+                txtRaca.setText("🐾Raça: " + cachorro.getRaca());
+                txtCor.setText("🎨Cor: " + cachorro.getCor());
+
             }
 
             return convertView;
