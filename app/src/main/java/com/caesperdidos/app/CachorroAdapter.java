@@ -29,6 +29,11 @@ public class CachorroAdapter extends ArrayAdapter<CadastrarCachorro> {
             TextView txtNome = convertView.findViewById(R.id.txtNome);
             TextView txtRaca = convertView.findViewById(R.id.txtRaca);
             TextView txtCor = convertView.findViewById(R.id.txtCor);
+            TextView txtDescricao  = convertView.findViewById(R.id.txtDescricao);
+            TextView txtTelefone  = convertView.findViewById(R.id.txtTelefone);
+            TextView txtTutor   = convertView.findViewById(R.id.txtTutor);
+
+
 
             CadastrarCachorro cachorro = getItem(position);
 
@@ -36,6 +41,11 @@ public class CachorroAdapter extends ArrayAdapter<CadastrarCachorro> {
                 txtNome.setText("🐶Nome: " + cachorro.getNome());
                 txtRaca.setText("🐾Raça: " + cachorro.getRaca());
                 txtCor.setText("🎨Cor: " + cachorro.getCor());
+                txtDescricao.setText("📄Descrição: " + cachorro.getDescricao());
+                txtTelefone.setText("📞Telefone: " + cachorro.getTelefone());
+                txtTutor.setText("👤Tutor: " + cachorro.getTutor());
+
+
 
             }
 
