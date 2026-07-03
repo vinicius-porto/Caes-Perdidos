@@ -47,6 +47,6 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("org.maplibre.gl:android-sdk:10.2.0")
+
 
 }
