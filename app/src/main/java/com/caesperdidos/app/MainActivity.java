@@ -2,7 +2,6 @@ package com.caesperdidos.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.activity.EdgeToEdge;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,21 +12,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
 
-  private MaterialButton btnInfo,btnClick;
-
-    /// Mostra informações sobre o aplicativo
-  private void openMessageInfo(){
-          btnInfo = findViewById(R.id.btnInfo);
-
-      btnInfo.setOnClickListener(view -> {
-
-          AlertDialog.Builder alertDialog = new  AlertDialog.Builder(MainActivity.this);
-          alertDialog.setTitle("Sobre o aplicativo:");
-          alertDialog.setMessage("Objetivo: Localizar e resgatar cães perdidos pelo mundo");
-          alertDialog.show();
-
-      });
-  }
+  private MaterialButton btnClick;
 
   private void openPageHome(){
       btnClick = findViewById(R.id.btnClick);
@@ -43,11 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
-
-
-        //Configura o botão para exibir a mensagem sobre o app
-        openMessageInfo();
 
         //exibe a pagina home do aplicativo
         openPageHome();
