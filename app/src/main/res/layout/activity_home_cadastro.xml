@@ -14,43 +14,30 @@
         android:paddingBottom="24dp"
         tools:context=".HomeCadastroActivity">
 
-        <TextView
-            android:id="@+id/textViewTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Cadastro"
-            android:textColor="@android:color/white"
-            android:textSize="45sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputNome"
             android:layout_width="0dp"
             android:layout_height="75dp"
-            android:layout_marginTop="24dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             app:boxBackgroundMode="none"
             app:hintEnabled="false"
-            app:layout_constraintTop_toBottomOf="@id/textViewTitulo"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editNome"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_radius"
+                android:gravity="center_vertical|start"
                 android:hint="Nome"
-                android:textColor="@android:color/white"
-                android:textColorHint="#ffffff"
                 android:paddingStart="16dp"
-                android:gravity="center_vertical|start"/>
+                android:textColor="@android:color/white"
+                android:textColorHint="#ffffff" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -132,6 +119,31 @@
                 android:inputType="textMultiLine"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLocalizacao"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:boxBackgroundMode="none"
+            app:hintEnabled="false"
+            app:layout_constraintTop_toBottomOf="@id/inputDescricao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editLocalizacao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_radius"
+                android:hint="Localização"
+                android:inputType="text"
+                android:textColor="@android:color/white"
+                android:textColorHint="#ffffff"
+                android:paddingStart="16dp"
+                android:gravity="center_vertical|start"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputTelefone"
@@ -142,7 +154,7 @@
             android:layout_marginEnd="32dp"
             app:boxBackgroundMode="none"
             app:hintEnabled="false"
-            app:layout_constraintTop_toBottomOf="@id/inputDescricao"
+            app:layout_constraintTop_toBottomOf="@id/inputLocalizacao"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
