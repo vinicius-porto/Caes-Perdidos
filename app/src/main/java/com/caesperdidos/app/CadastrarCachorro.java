@@ -8,7 +8,9 @@ public class CadastrarCachorro {
     private String telefone;
     private String tutor;
 
+    private String localizacao;
     //getters
+    public String getLocalizacao() {return localizacao;}
     public String getNome() {return nome;}
     public String getRaca() {return raca;}
     public String getCor() {return cor;}
@@ -23,7 +25,7 @@ public class CadastrarCachorro {
     public void setDescricao(String descricao) {this.descricao = descricao;}
     public void setTelefone(String telefone) {this.telefone = telefone;}
     public void setTutor(String tutor) {this.tutor = tutor;}
-
+    public void setLocalizacao(String localizacao) {this.localizacao = localizacao;}
 
 
 

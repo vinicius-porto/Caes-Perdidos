@@ -17,10 +17,10 @@ public class HomeCadastroActivity extends AppCompatActivity {
 
     private MaterialButton btnCadastro;
     private FirebaseDatabase database;
-    private AppCompatEditText editNome,editRaca,editCor,editDescricao,editTelefone, editTutor;
+    private AppCompatEditText editNome,editRaca,editCor,editDescricao,editTelefone, editTutor,editLocalizacao;
 
-    private static final String ERRO_NOME = "Por favor insira o nome";
-    private static final String ERRO_RACA = "Por favor insira a raça";
+
+    private static final String ERRO_LOCALIZACAO = "Por favor insira a Localização";
     private static final String ERRO_COR = "Por favor insira a cor";
 
     private static final String ERRO_DESCRICAO = "Por favor insira a descrição";
@@ -65,17 +65,19 @@ public class HomeCadastroActivity extends AppCompatActivity {
         editDescricao = findViewById(R.id.editDescricao);
         editTelefone = findViewById(R.id.editTelefone);
         editTutor = findViewById(R.id.editTutor);
+        editLocalizacao = findViewById(R.id.editLocalizacao);
     }
 
 
 
     private  boolean verificaCampos() {
-        String nome = editNome.getText().toString().trim();
-        String raca = editRaca.getText().toString().trim();
+
+
         String cor = editCor.getText().toString().trim();
         String descricao = editDescricao.getText().toString().trim();
         String telefone = editTelefone.getText().toString().trim();
         String tutor = editTutor.getText().toString().trim();
+        String localizacao = editLocalizacao.getText().toString().trim();
         //Verifica se os campos obrigatórios estão preenchidos
        if(tutor.isEmpty()) {
            editTutor.setError(ERRO_TUTOR);
@@ -89,15 +91,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
             editTelefone.setError("Telefone inválido");
             editTelefone.requestFocus();
             return false;
-        } else if (nome.isEmpty()) {
-            editNome.setError(ERRO_NOME);
-            editNome.requestFocus();
-            return false;
-        } else if (raca.isEmpty()) {
-            editRaca.setError(ERRO_RACA);
-            editRaca.requestFocus();
-            return false;
-        } else if (cor.isEmpty()) {
+        }else if (cor.isEmpty()) {
             editCor.setError(ERRO_COR);
             editCor.requestFocus();
             return false;
@@ -105,7 +99,11 @@ public class HomeCadastroActivity extends AppCompatActivity {
             editDescricao.setError(ERRO_DESCRICAO);
             editDescricao.requestFocus();
             return false;
-        }
+        } else if (localizacao.isEmpty()) {
+             editLocalizacao.setError(ERRO_LOCALIZACAO);
+             editLocalizacao.requestFocus();
+           return false;
+       }
         return true;
     }
 
@@ -118,7 +116,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
         String descricao = editDescricao.getText().toString().trim();
         String telefone = editTelefone.getText().toString().trim();
         String tutor = editTutor.getText().toString().trim();
-
+        String localizacao = editLocalizacao.getText().toString().trim();
         // Cria objeto
         CadastrarCachorro cadastrarCachorro = new CadastrarCachorro();
         cadastrarCachorro.setNome(nome);
@@ -127,6 +125,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
         cadastrarCachorro.setDescricao(descricao);
         cadastrarCachorro.setTelefone(telefone);
         cadastrarCachorro.setTutor(tutor);
+        cadastrarCachorro.setLocalizacao(localizacao);
         String id = database.getReference()
                 .child("cachorros")
                 .push()
@@ -165,6 +164,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
         editDescricao.setText("");
         editTelefone.setText("");
         editTutor.setText("");
+        editLocalizacao.setText("");
         editNome.requestFocus();
     }
 
