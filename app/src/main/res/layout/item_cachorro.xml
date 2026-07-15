@@ -109,6 +109,17 @@
             app:backgroundTint="@null"/>
 
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExcluir"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:text="Excluir"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:padding="0dp"
+            app:backgroundTint="#ff1343"/>
 
     </LinearLayout>
 

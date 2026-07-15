@@ -5,7 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
+import android.widget.Button;
+import com.google.firebase.database.FirebaseDatabase;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -33,9 +34,20 @@ public class CachorroAdapter extends ArrayAdapter<CadastrarCachorro> {
             TextView txtTelefone  = convertView.findViewById(R.id.txtTelefone);
             TextView txtTutor   = convertView.findViewById(R.id.txtTutor);
             TextView txtLocalizacao = convertView.findViewById(R.id.txtLocalizacao);
+            Button btnExcluir = convertView.findViewById(R.id.btnExcluir);
+
 
 
             CadastrarCachorro cachorro = getItem(position);
+
+            btnExcluir.setOnClickListener(v -> {
+
+                FirebaseDatabase.getInstance()
+                        .getReference("cachorros")
+                        .child(cachorro.getId())
+                        .removeValue();
+
+            });
 
             if (cachorro != null) {
                 txtNome.setText("🐶Nome: " + cachorro.getNome());

@@ -1,6 +1,7 @@
 package com.caesperdidos.app;
 
 public class CadastrarCachorro {
+    private String id;
     private String nome;
     private String raca;
     private String cor;
@@ -10,6 +11,7 @@ public class CadastrarCachorro {
 
     private String localizacao;
     //getters
+    public String getId() {return id;}
     public String getLocalizacao() {return localizacao;}
     public String getNome() {return nome;}
     public String getRaca() {return raca;}
@@ -26,6 +28,7 @@ public class CadastrarCachorro {
     public void setTelefone(String telefone) {this.telefone = telefone;}
     public void setTutor(String tutor) {this.tutor = tutor;}
     public void setLocalizacao(String localizacao) {this.localizacao = localizacao;}
+    public void setId(String id) {this.id = id;}
 
 
 
