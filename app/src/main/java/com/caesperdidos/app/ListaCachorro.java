@@ -77,7 +77,7 @@ public class ListaCachorro extends AppCompatActivity {
             CadastrarCachorro cachorro = dados.getValue(CadastrarCachorro.class);
 
             if (cachorro != null) {
-
+                cachorro.setId(dados.getKey());
                 lista.add(cachorro);
             }
         }

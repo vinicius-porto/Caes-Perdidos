@@ -121,6 +121,18 @@
             android:padding="0dp"
             app:backgroundTint="#ff1343"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEditar"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:text="Editar"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:padding="0dp"
+            app:backgroundTint="#39ff5b"/>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

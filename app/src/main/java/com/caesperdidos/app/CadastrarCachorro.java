@@ -1,6 +1,10 @@
 package com.caesperdidos.app;
 
 public class CadastrarCachorro {
+
+    public CadastrarCachorro() {
+
+    }
     private String id;
     private String nome;
     private String raca;
