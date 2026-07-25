@@ -1,20 +1,24 @@
 package com.caesperdidos.app;
-import android.app.AlertDialog;
-import android.widget.EditText;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import android.widget.Button;
-import com.google.firebase.database.FirebaseDatabase;
+import android.widget.TextView;
+
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 public class CachorroAdapter extends ArrayAdapter<Cachorro> {
+
 
         public CachorroAdapter(Activity activity, List<Cachorro> lista) {
             super(activity, 0, lista);
@@ -42,73 +46,39 @@ public class CachorroAdapter extends ArrayAdapter<Cachorro> {
 
             Cachorro cachorro = getItem(position);
 
-            btnExcluir.setOnClickListener(v -> {
-
-                FirebaseDatabase.getInstance()
-                        .getReference("cachorros")
-                        .child(cachorro.getId())
-                        .removeValue();
-
-            });
-
-
-            btnEditar.setOnClickListener(v -> {
-
-                View view = LayoutInflater.from(getContext())
-                        .inflate(R.layout.dialog_editar_cachorro, null);
-
-                EditText edtNome = view.findViewById(R.id.edtNome);
-                EditText edtRaca = view.findViewById(R.id.edtRaca);
-                EditText edtCor = view.findViewById(R.id.edtCor);
-                EditText edtDescricao = view.findViewById(R.id.edtDescricao);
-                EditText edtTelefone = view.findViewById(R.id.edtTelefone);
-                EditText edtTutor = view.findViewById(R.id.edtTutor);
-                EditText edtLocalizacao = view.findViewById(R.id.edtLocalizacao);
-
-                // Preenche os campos
-                edtNome.setText(cachorro.getNome());
-                edtRaca.setText(cachorro.getRaca());
-                edtCor.setText(cachorro.getCor());
-                edtDescricao.setText(cachorro.getDescricao());
-                edtTelefone.setText(cachorro.getTelefone());
-                edtTutor.setText(cachorro.getTutor());
-                edtLocalizacao.setText(cachorro.getLocalizacao());
-
-                new AlertDialog.Builder(getContext())
-                        .setTitle("Editar Cachorro")
-                        .setView(view)
-                        .setPositiveButton("Salvar", (dialog, which) -> {
-
-                            cachorro.setNome(edtNome.getText().toString());
-                            cachorro.setRaca(edtRaca.getText().toString());
-                            cachorro.setCor(edtCor.getText().toString());
-                            cachorro.setDescricao(edtDescricao.getText().toString());
-                            cachorro.setTelefone(edtTelefone.getText().toString());
-                            cachorro.setTutor(edtTutor.getText().toString());
-                            cachorro.setLocalizacao(edtLocalizacao.getText().toString());
-
-                            FirebaseDatabase.getInstance()
-                                    .getReference("cachorros")
-                                    .child(cachorro.getId())
-                                    .setValue(cachorro);
-
-                            notifyDataSetChanged();
-
-                        })
-                        .setNegativeButton("Cancelar", null)
-                        .show();
-
-            });
-
             if (cachorro != null) {
+
                 txtNome.setText("🐶Nome: " + cachorro.getNome());
                 txtRaca.setText("🐾Raça: " + cachorro.getRaca());
                 txtCor.setText("🎨Cor: " + cachorro.getCor());
                 txtDescricao.setText("📄Descrição: " + cachorro.getDescricao());
                 txtTelefone.setText("📞Telefone: " + cachorro.getTelefone());
                 txtTutor.setText("👤Tutor: " + cachorro.getTutor());
-                txtLocalizacao.setText("📍Localizacão: " + cachorro.getLocalizacao());
+                txtLocalizacao.setText("📍Localização: " + cachorro.getLocalizacao());
 
+
+                btnExcluir.setOnClickListener(v -> {
+
+                    FirebaseDatabase.getInstance()
+                            .getReference("cachorros")
+                            .child(cachorro.getId())
+                            .removeValue();
+
+                });
+
+
+                btnEditar.setOnClickListener(v -> {
+
+                    Intent intent = new Intent(
+                            getContext(),
+                            EditarCachorroActivity.class
+                    );
+
+                    intent.putExtra("cachorro", cachorro);
+
+                    getContext().startActivity(intent);
+
+                });
 
             }
 

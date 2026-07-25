@@ -1,6 +1,6 @@
 package com.caesperdidos.app;
-
-public class Cachorro {
+import java.io.Serializable;
+public class Cachorro implements Serializable {
 
     public Cachorro() {
 
