@@ -1,8 +1,8 @@
 package com.caesperdidos.app;
 
-public class CadastrarCachorro {
+public class Cachorro {
 
-    public CadastrarCachorro() {
+    public Cachorro() {
 
     }
     private String id;

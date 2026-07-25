@@ -14,9 +14,9 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class CachorroAdapter extends ArrayAdapter<CadastrarCachorro> {
+public class CachorroAdapter extends ArrayAdapter<Cachorro> {
 
-        public CachorroAdapter(Activity activity, List<CadastrarCachorro> lista) {
+        public CachorroAdapter(Activity activity, List<Cachorro> lista) {
             super(activity, 0, lista);
         }
 
@@ -40,7 +40,7 @@ public class CachorroAdapter extends ArrayAdapter<CadastrarCachorro> {
             Button btnEditar = convertView.findViewById(R.id.btnEditar);
 
 
-            CadastrarCachorro cachorro = getItem(position);
+            Cachorro cachorro = getItem(position);
 
             btnExcluir.setOnClickListener(v -> {
 

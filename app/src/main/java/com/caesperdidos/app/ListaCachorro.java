@@ -23,7 +23,7 @@ public class ListaCachorro extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private ListView listView;
-    private ArrayList<CadastrarCachorro> lista;
+    private ArrayList<Cachorro> lista;
     private CachorroAdapter adapter;
 
 
@@ -74,7 +74,7 @@ public class ListaCachorro extends AppCompatActivity {
 
         for (DataSnapshot dados : snapshot.getChildren()) {
 
-            CadastrarCachorro cachorro = dados.getValue(CadastrarCachorro.class);
+            Cachorro cachorro = dados.getValue(Cachorro.class);
 
             if (cachorro != null) {
                 cachorro.setId(dados.getKey());

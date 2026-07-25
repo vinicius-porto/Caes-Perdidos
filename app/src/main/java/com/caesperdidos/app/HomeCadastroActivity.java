@@ -118,14 +118,14 @@ public class HomeCadastroActivity extends AppCompatActivity {
         String tutor = editTutor.getText().toString().trim();
         String localizacao = editLocalizacao.getText().toString().trim();
         // Cria objeto
-        CadastrarCachorro cadastrarCachorro = new CadastrarCachorro();
-        cadastrarCachorro.setNome(nome);
-        cadastrarCachorro.setRaca(raca);
-        cadastrarCachorro.setCor(cor);
-        cadastrarCachorro.setDescricao(descricao);
-        cadastrarCachorro.setTelefone(telefone);
-        cadastrarCachorro.setTutor(tutor);
-        cadastrarCachorro.setLocalizacao(localizacao);
+        Cachorro cachorro = new Cachorro();
+        cachorro.setNome(nome);
+        cachorro.setRaca(raca);
+        cachorro.setCor(cor);
+        cachorro.setDescricao(descricao);
+        cachorro.setTelefone(telefone);
+        cachorro.setTutor(tutor);
+        cachorro.setLocalizacao(localizacao);
         String id = database.getReference()
                 .child("cachorros")
                 .push()
@@ -135,7 +135,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
         database.getReference()
                 .child("cachorros")
                 .child(id)
-                .setValue(cadastrarCachorro)
+                .setValue(cachorro)
                 .addOnSuccessListener(unused -> {
 
                     Toast.makeText(this,
