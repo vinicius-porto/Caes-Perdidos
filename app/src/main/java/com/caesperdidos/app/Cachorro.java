@@ -12,10 +12,15 @@ public class Cachorro implements Serializable {
     private String descricao;
     private String telefone;
     private String tutor;
-
     private String localizacao;
+    private double latitude;
+    private double longitude;
+
+
     //getters
     public String getId() {return id;}
+    public double getLatitude() {return latitude;}
+    public double getLongitude() {return longitude;}
     public String getLocalizacao() {return localizacao;}
     public String getNome() {return nome;}
     public String getRaca() {return raca;}
@@ -33,9 +38,8 @@ public class Cachorro implements Serializable {
     public void setTutor(String tutor) {this.tutor = tutor;}
     public void setLocalizacao(String localizacao) {this.localizacao = localizacao;}
     public void setId(String id) {this.id = id;}
-
-
-
+    public void setLatitude(double latitude) {this.latitude = latitude;}
+    public void setLongitude(double longitude) {this.longitude = longitude;}
 
 
 

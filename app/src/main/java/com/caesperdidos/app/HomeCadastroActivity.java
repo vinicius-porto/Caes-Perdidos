@@ -2,8 +2,10 @@ package com.caesperdidos.app;
 
 import android.os.Bundle;
 import android.widget.Toast;
-
+import android.content.Intent;
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -18,7 +20,8 @@ public class HomeCadastroActivity extends AppCompatActivity {
     private MaterialButton btnCadastro;
     private FirebaseDatabase database;
     private AppCompatEditText editNome,editRaca,editCor,editDescricao,editTelefone, editTutor,editLocalizacao;
-
+    private double latitude;
+    private double longitude;
 
     private static final String ERRO_LOCALIZACAO = "Por favor insira a Localização";
     private static final String ERRO_COR = "Por favor insira a cor";
@@ -29,6 +32,24 @@ public class HomeCadastroActivity extends AppCompatActivity {
 
     private static final String ERRO_TUTOR = "Por favor informe o nome do tutor";
 
+    private ActivityResultLauncher<Intent> mapaLauncher =
+            registerForActivityResult(
+                    new ActivityResultContracts.StartActivityForResult(),
+                    result -> {
+
+                        if(result.getResultCode() == RESULT_OK &&
+                                result.getData() != null){
+
+                            latitude = result.getData().getDoubleExtra("latitude", 0);
+                            longitude = result.getData().getDoubleExtra("longitude", 0);
+
+                            editLocalizacao.setText(
+                                    "Latitude: " + latitude +
+                                            "\nLongitude: " + longitude
+                            );
+                        }
+
+                    });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,6 +59,16 @@ public class HomeCadastroActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         selectElements();
 
+        editLocalizacao.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    HomeCadastroActivity.this,
+                    MapaActivity.class
+            );
+
+            mapaLauncher.launch(intent);
+
+        });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

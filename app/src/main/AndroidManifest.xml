@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CaesPerdidos">
         <activity
+            android:name=".MapaActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditarCachorroActivity"
             android:exported="false" />
         <activity
