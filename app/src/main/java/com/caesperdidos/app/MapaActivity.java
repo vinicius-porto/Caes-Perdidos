@@ -55,9 +55,54 @@ public class MapaActivity extends AppCompatActivity {
 
         controller.setZoom(15.0);
 
-        GeoPoint portoAlegre = new GeoPoint(-30.0346, -51.2177);
+        double latitudeRecebida =
+                getIntent().getDoubleExtra("latitude", 0);
 
-        controller.setCenter(portoAlegre);
+        double longitudeRecebida =
+                getIntent().getDoubleExtra("longitude", 0);
+
+        if (latitudeRecebida != 0 && longitudeRecebida != 0) {
+
+            latitude = latitudeRecebida;
+            longitude = longitudeRecebida;
+
+            GeoPoint localizacaoAtual =
+                    new GeoPoint(latitude, longitude);
+
+            controller.setCenter(localizacaoAtual);
+
+        } else {
+
+            GeoPoint portoAlegre =
+                    new GeoPoint(-30.0346, -51.2177);
+
+            controller.setCenter(portoAlegre);
+        }
+
+        if (latitude != 0 && longitude != 0) {
+
+            GeoPoint localizacaoAtual =
+                    new GeoPoint(latitude, longitude);
+
+            marker = new Marker(map);
+
+            marker.setPosition(localizacaoAtual);
+
+            marker.setAnchor(
+                    Marker.ANCHOR_CENTER,
+                    Marker.ANCHOR_BOTTOM
+            );
+
+            marker.setTitle(
+                    String.format(
+                            "Latitude: %.6f\nLongitude: %.6f",
+                            latitude,
+                            longitude
+                    )
+            );
+
+            map.getOverlays().add(marker);
+        }
 
 
         MapEventsReceiver receiver = new MapEventsReceiver() {

@@ -54,7 +54,13 @@ public class CachorroAdapter extends ArrayAdapter<Cachorro> {
                 txtDescricao.setText("📄Descrição: " + cachorro.getDescricao());
                 txtTelefone.setText("📞Telefone: " + cachorro.getTelefone());
                 txtTutor.setText("👤Tutor: " + cachorro.getTutor());
-                txtLocalizacao.setText("📍Localização: " + cachorro.getLocalizacao());
+                txtLocalizacao.setText(
+                        String.format(
+                                "📍Latitude: %.6f\n📍Longitude: %.6f",
+                                cachorro.getLatitude(),
+                                cachorro.getLongitude()
+                        )
+                );
 
 
                 btnExcluir.setOnClickListener(v -> {

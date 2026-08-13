@@ -1,5 +1,8 @@
 package com.caesperdidos.app;
+import android.content.Intent;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -13,7 +16,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.FirebaseDatabase;
 public class EditarCachorroActivity extends AppCompatActivity {
-
+    private Cachorro cachorro;
     private TextInputEditText editNome;
     private TextInputEditText editRaca;
     private TextInputEditText editCor;
@@ -24,7 +27,29 @@ public class EditarCachorroActivity extends AppCompatActivity {
 
     private MaterialButton btnEditar;
 
-    private Cachorro cachorro;
+    private double latitude;
+    private double longitude;
+
+    private final ActivityResultLauncher<Intent> mapaLauncher =
+            registerForActivityResult(
+                    new ActivityResultContracts.StartActivityForResult(),
+                    result -> {
+
+                        if (result.getResultCode() == RESULT_OK &&
+                                result.getData() != null) {
+
+                            latitude = result.getData()
+                                    .getDoubleExtra("latitude", 0);
+
+                            longitude = result.getData()
+                                    .getDoubleExtra("longitude", 0);
+
+                            editLocalizacao.setText(
+                                    "📍 Localização selecionada"
+                            );
+                        }
+                    }
+            );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +69,8 @@ public class EditarCachorroActivity extends AppCompatActivity {
 
 
         if (cachorro != null) {
-
+            latitude = cachorro.getLatitude();
+            longitude = cachorro.getLongitude();
             editNome.setText(cachorro.getNome());
             editRaca.setText(cachorro.getRaca());
             editCor.setText(cachorro.getCor());
@@ -53,6 +79,24 @@ public class EditarCachorroActivity extends AppCompatActivity {
             editTutor.setText(cachorro.getTutor());
             editLocalizacao.setText(cachorro.getLocalizacao());
         }
+
+        editLocalizacao.setFocusable(false);
+        editLocalizacao.setClickable(true);
+
+        editLocalizacao.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    EditarCachorroActivity.this,
+                    MapaActivity.class
+            );
+
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
+
+            mapaLauncher.launch(intent);
+        });
+
+
         btnEditar.setOnClickListener(v -> {
 
             if (cachorro == null) {
@@ -72,7 +116,8 @@ public class EditarCachorroActivity extends AppCompatActivity {
             cachorro.setTelefone(editTelefone.getText().toString().trim());
             cachorro.setTutor(editTutor.getText().toString().trim());
             cachorro.setLocalizacao(editLocalizacao.getText().toString().trim());
-
+            cachorro.setLatitude(latitude);
+            cachorro.setLongitude(longitude);
 
             FirebaseDatabase.getInstance()
                     .getReference("cachorros")
