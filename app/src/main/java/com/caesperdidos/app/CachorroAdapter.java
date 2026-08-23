@@ -42,7 +42,7 @@ public class CachorroAdapter extends ArrayAdapter<Cachorro> {
             TextView txtLocalizacao = convertView.findViewById(R.id.txtLocalizacao);
             Button btnExcluir = convertView.findViewById(R.id.btnExcluir);
             Button btnEditar = convertView.findViewById(R.id.btnEditar);
-
+            Button btnMapa = convertView.findViewById(R.id.btnMapa);
 
             Cachorro cachorro = getItem(position);
 
@@ -55,13 +55,20 @@ public class CachorroAdapter extends ArrayAdapter<Cachorro> {
                 txtTelefone.setText("📞Telefone: " + cachorro.getTelefone());
                 txtTutor.setText("👤Tutor: " + cachorro.getTutor());
                 txtLocalizacao.setText(
-                        String.format(
-                                "📍Latitude: %.6f\n📍Longitude: %.6f",
-                                cachorro.getLatitude(),
-                                cachorro.getLongitude()
-                        )
+                        "📍" + cachorro.getLocalizacao()
                 );
+                btnMapa.setOnClickListener(v -> {
 
+                    Intent intent = new Intent(
+                            getContext(),
+                            MapaActivity.class
+                    );
+
+                    intent.putExtra("latitude", cachorro.getLatitude());
+                    intent.putExtra("longitude", cachorro.getLongitude());
+
+                    getContext().startActivity(intent);
+                });
 
                 btnExcluir.setOnClickListener(v -> {
 
@@ -85,6 +92,8 @@ public class CachorroAdapter extends ArrayAdapter<Cachorro> {
                     getContext().startActivity(intent);
 
                 });
+
+
 
             }
 

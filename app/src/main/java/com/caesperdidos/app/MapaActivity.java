@@ -1,5 +1,11 @@
 package com.caesperdidos.app;
 
+import android.location.Address;
+import android.location.Geocoder;
+import android.widget.Toast;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 import android.content.Intent;
 import android.os.Bundle;
 import org.osmdroid.events.MapEventsReceiver;
@@ -18,6 +24,7 @@ import org.osmdroid.api.IMapController;
 public class MapaActivity extends AppCompatActivity {
     private MapView map;
     private Marker marker;
+    private String endereco = "";
     private double latitude= 0;
     private double longitude = 0;
     private MaterialButton btnConfirmar;
@@ -33,6 +40,8 @@ public class MapaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mapa);
         map = findViewById(R.id.map);
         map.setMultiTouchControls(true);
+        map.setTilesScaledToDpi(true);
+        map.getController().setZoom(17.0);
 
         btnConfirmar = findViewById(R.id.btnConfirmar);
 
@@ -42,7 +51,7 @@ public class MapaActivity extends AppCompatActivity {
 
             intent.putExtra("latitude", latitude);
             intent.putExtra("longitude", longitude);
-
+            intent.putExtra("endereco", endereco);
             setResult(RESULT_OK, intent);
 
             finish();
@@ -112,23 +121,25 @@ public class MapaActivity extends AppCompatActivity {
                 if (marker != null) {
                     map.getOverlays().remove(marker);
                 }
+
                 latitude = p.getLatitude();
                 longitude = p.getLongitude();
-                marker = new Marker(map);
-                marker.setPosition(p);
-                marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
 
-                marker.setTitle(
-                        String.format(
-                                "Latitude: %.6f\nLongitude: %.6f",
-                                p.getLatitude(),
-                                p.getLongitude()
-                        )
+                marker = new Marker(map);
+
+                marker.setPosition(p);
+
+                marker.setAnchor(
+                        Marker.ANCHOR_CENTER,
+                        Marker.ANCHOR_BOTTOM
                 );
 
                 map.getOverlays().add(marker);
 
-                marker.showInfoWindow();
+                buscarEndereco(
+                        latitude,
+                        longitude
+                );
 
                 map.invalidate();
 
@@ -153,5 +164,58 @@ public class MapaActivity extends AppCompatActivity {
 
     }
 
+
+    private void buscarEndereco(double latitude, double longitude) {
+
+        Geocoder geocoder = new Geocoder(
+                this,
+                Locale.getDefault()
+        );
+
+        try {
+
+            List<Address> enderecos = geocoder.getFromLocation(
+                    latitude,
+                    longitude,
+                    1
+            );
+
+            if (enderecos != null && !enderecos.isEmpty()) {
+
+                Address address = enderecos.get(0);
+
+                endereco = address.getAddressLine(0);
+
+                if (marker != null) {
+
+                    marker.setTitle(endereco);
+                    marker.showInfoWindow();
+
+                }
+
+                map.invalidate();
+
+            } else {
+
+                endereco = "Endereço não encontrado";
+
+                Toast.makeText(
+                        this,
+                        endereco,
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+
+        } catch (IOException e) {
+
+            endereco = "Não foi possível obter o endereço";
+
+            Toast.makeText(
+                    this,
+                    endereco,
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+    }
 
 }

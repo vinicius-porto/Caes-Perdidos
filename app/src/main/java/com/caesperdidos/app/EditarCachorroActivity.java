@@ -29,6 +29,7 @@ public class EditarCachorroActivity extends AppCompatActivity {
 
     private double latitude;
     private double longitude;
+    private String endereco = "";
 
     private final ActivityResultLauncher<Intent> mapaLauncher =
             registerForActivityResult(
@@ -44,8 +45,13 @@ public class EditarCachorroActivity extends AppCompatActivity {
                             longitude = result.getData()
                                     .getDoubleExtra("longitude", 0);
 
+                            endereco = result.getData()
+                                    .getStringExtra("endereco");
+
                             editLocalizacao.setText(
-                                    "📍 Localização selecionada"
+                                    "📍" + endereco +
+                                            "\nLatitude: " + latitude +
+                                            "\nLongitude: " + longitude
                             );
                         }
                     }
@@ -71,6 +77,7 @@ public class EditarCachorroActivity extends AppCompatActivity {
         if (cachorro != null) {
             latitude = cachorro.getLatitude();
             longitude = cachorro.getLongitude();
+            endereco = cachorro.getLocalizacao();
             editNome.setText(cachorro.getNome());
             editRaca.setText(cachorro.getRaca());
             editCor.setText(cachorro.getCor());

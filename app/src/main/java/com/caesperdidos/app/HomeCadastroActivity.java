@@ -22,7 +22,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
     private AppCompatEditText editNome,editRaca,editCor,editDescricao,editTelefone, editTutor,editLocalizacao;
     private double latitude;
     private double longitude;
-
+    private String endereco = "";
     private static final String ERRO_LOCALIZACAO = "Por favor insira a Localização";
     private static final String ERRO_COR = "Por favor insira a cor";
 
@@ -43,8 +43,11 @@ public class HomeCadastroActivity extends AppCompatActivity {
                             latitude = result.getData().getDoubleExtra("latitude", 0);
                             longitude = result.getData().getDoubleExtra("longitude", 0);
 
+                            endereco = result.getData().getStringExtra("endereco");
+
                             editLocalizacao.setText(
-                                    "Latitude: " + latitude +
+                                    endereco +
+                                            "\nLatitude: " + latitude +
                                             "\nLongitude: " + longitude
                             );
                         }
@@ -148,6 +151,7 @@ public class HomeCadastroActivity extends AppCompatActivity {
         String telefone = editTelefone.getText().toString().trim();
         String tutor = editTutor.getText().toString().trim();
         String localizacao = editLocalizacao.getText().toString().trim();
+
         // Cria objeto
         Cachorro cachorro = new Cachorro();
         cachorro.setNome(nome);
@@ -156,12 +160,15 @@ public class HomeCadastroActivity extends AppCompatActivity {
         cachorro.setDescricao(descricao);
         cachorro.setTelefone(telefone);
         cachorro.setTutor(tutor);
-        cachorro.setLocalizacao(localizacao);
+        cachorro.setLocalizacao(endereco);
+        cachorro.setLatitude(latitude);
+        cachorro.setLongitude(longitude);
+
+
         String id = database.getReference()
                 .child("cachorros")
                 .push()
                 .getKey();
-
 
         database.getReference()
                 .child("cachorros")
@@ -169,19 +176,25 @@ public class HomeCadastroActivity extends AppCompatActivity {
                 .setValue(cachorro)
                 .addOnSuccessListener(unused -> {
 
-                    Toast.makeText(this,
+                    Toast.makeText(
+                            this,
                             "Cachorro cadastrado com sucesso!",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG
+                    ).show();
 
                     limparCampos();
 
-                }).addOnFailureListener(e -> {
+                })
+                .addOnFailureListener(e -> {
 
-                    Toast.makeText(this,
-                            "Erro ao cadastrar",
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(
+                            this,
+                            "Erro ao cadastrar: " + e.getMessage(),
+                            Toast.LENGTH_LONG
+                    ).show();
 
                 });
+
 
     }
 
