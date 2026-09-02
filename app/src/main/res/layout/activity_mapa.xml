@@ -21,10 +21,12 @@
         android:id="@+id/btnConfirmar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:backgroundTint="#FF7926"
         android:layout_margin="24dp"
         android:text="Confirmar localização"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="24dp"
+    android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
     app:cardCornerRadius="18dp"
     app:cardBackgroundColor="#FFFFFF"
@@ -21,15 +21,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="top">
 
             <ImageView
                 android:id="@+id/imgDog"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
                 android:layout_marginEnd="16dp"
                 android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_gallery"/>
+                android:src="@android:drawable/ic_menu_gallery"
+                android:contentDescription="Foto do cachorro" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -39,103 +40,137 @@
 
                 <TextView
                     android:id="@+id/txtNome"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
+                    android:textSize="21sp"
                     android:textStyle="bold"
-                    android:textColor="#6C6C6C"/>
+                    android:textColor="#333333"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
 
                 <TextView
                     android:id="@+id/txtRaca"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:textColor="#6C6C6C"/>
+                    android:layout_marginTop="5dp"
+                    android:textSize="14sp"
+                    android:textColor="#666666" />
 
                 <TextView
                     android:id="@+id/txtCor"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="#6C6C6C"/>
+                    android:layout_marginTop="3dp"
+                    android:textSize="14sp"
+                    android:textColor="#666666" />
 
                 <TextView
                     android:id="@+id/txtDescricao"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="#6C6C6C"/>
-
-                <TextView
-                    android:id="@+id/txtLocalizacao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="#6C6C6C"/>
-
-                <TextView
-                    android:id="@+id/txtTelefone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="#6C6C6C"/>
-
-                <TextView
-                    android:id="@+id/txtTutor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="#6C6C6C"/>
+                    android:layout_marginTop="3dp"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
 
             </LinearLayout>
 
         </LinearLayout>
 
 
+        <TextView
+            android:id="@+id/txtLocalizacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+
+        <TextView
+            android:id="@+id/txtTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            android:textColor="#555555" />
+
+
+        <TextView
+            android:id="@+id/txtTutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            android:textColor="#555555" />
+
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginVertical="12dp"
-            android:background="#40FFFFFF"/>
-
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="12dp"
+            android:background="#E5E5E5" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMapa"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="6dp"
                 android:text="Local"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:textAllCaps="false"
+                app:icon="@drawable/location"
+                app:iconTint="#FFFFFF"
+                app:iconGravity="textStart"
+                app:iconPadding="5dp"
                 app:cornerRadius="20dp"
-                android:textColor="#ffff"
-                app:backgroundTint="#FF7926"/>
+                app:backgroundTint="#FF7926" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditar"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp"
+                android:text="Editar"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:textAllCaps="false"
+                app:icon="@drawable/edit"
+                app:iconTint="#FFFFFF"
+                app:iconGravity="textStart"
+                app:iconPadding="5dp"
+                app:cornerRadius="20dp"
+                app:backgroundTint="#28B7D1" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnExcluir"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
+                android:layout_marginStart="6dp"
                 android:text="Excluir"
-                android:textColor="#ffff"
-                app:backgroundTint="#D1282B"
-                app:cornerRadius="20dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEditar"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:text="Editar"
-                android:textColor="#ffff"
-                app:backgroundTint="#28B7D1"
-                app:cornerRadius="20dp" />
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:textAllCaps="false"
+                app:icon="@drawable/trash"
+                app:iconTint="#FFFFFF"
+                app:iconGravity="textStart"
+                app:iconPadding="5dp"
+                app:cornerRadius="20dp"
+                app:backgroundTint="#D1282B" />
 
         </LinearLayout>
 
