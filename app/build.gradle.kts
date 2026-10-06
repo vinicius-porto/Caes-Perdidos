@@ -48,5 +48,6 @@ dependencies {
     implementation("com.google.firebase:firebase-database")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("org.osmdroid:osmdroid-android:6.1.18")
+    implementation ("com.google.firebase:firebase-storage")
 
 }
