@@ -9,7 +9,7 @@
         android:id="@+id/edtNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome" />
+        android:hint="Nome do cachorro" />
 
     <EditText
         android:id="@+id/edtRaca"
@@ -27,13 +27,13 @@
         android:id="@+id/edtDescricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descrição" />
+        android:hint="Características do cachorro" />
 
     <EditText
         android:id="@+id/edtTelefone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Telefone"
+        android:hint="Telefone para contato"
         android:inputType="phone" />
 
     <EditText
@@ -46,6 +46,6 @@
         android:id="@+id/edtLocalizacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Localização" />
+        android:hint="Localização onde foi perdido" />
 
 </LinearLayout>

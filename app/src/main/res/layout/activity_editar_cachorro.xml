@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/button_radius"
             android:gravity="center_vertical|start"
-            android:hint="Nome"
+            android:hint="Nome do cachorro"
             android:paddingStart="16dp"
             android:textColor="@android:color/white"
             android:textColorHint="#ffffff" />
