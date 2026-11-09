@@ -25,12 +25,12 @@
 
             <ImageView
                 android:id="@+id/imgDog"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
                 android:layout_marginEnd="16dp"
+                android:contentDescription="Foto do cachorro"
                 android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_gallery"
-                android:contentDescription="Foto do cachorro" />
+                android:src="@android:drawable/ic_menu_gallery" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -134,6 +134,8 @@
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
                 app:backgroundTint="#FF7926"
+                app:strokeColor="#F5A56C"
+                app:strokeWidth="4dp"
                 app:cornerRadius="20dp"
                 app:icon="@drawable/location"
                 app:iconGravity="textStart"
@@ -152,6 +154,8 @@
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
                 app:backgroundTint="#28B7D1"
+                app:strokeColor="#6FD7EA"
+                app:strokeWidth="4dp"
                 app:cornerRadius="20dp"
                 app:icon="@drawable/edit"
                 app:iconGravity="textStart"
@@ -169,6 +173,8 @@
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
+                app:strokeColor="#FF7185"
+                app:strokeWidth="4dp"
                 app:backgroundTint="#E60F2F"
                 app:cornerRadius="20dp"
                 app:icon="@drawable/trash"
